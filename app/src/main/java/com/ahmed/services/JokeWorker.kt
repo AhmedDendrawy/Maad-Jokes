@@ -2,8 +2,6 @@ package com.ahmed.services
 
 import android.content.Context
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.Worker
@@ -21,8 +19,8 @@ class JokeWorker(context: Context, workerParameters: WorkerParameters) :
 fun scheduleDailyJoke(context: Context) {
 
     val dailyWorkRequest = PeriodicWorkRequestBuilder<JokeWorker>(
-        15,
-        TimeUnit.MINUTES
+        1,
+        TimeUnit.DAYS
     )
         .build()
     WorkManager.getInstance(context).enqueueUniquePeriodicWork(
